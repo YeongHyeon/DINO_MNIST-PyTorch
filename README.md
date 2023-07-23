@@ -9,10 +9,21 @@ PyTorch implementation of "Emerging Properties in Self-Supervised Vision Transfo
 </div>
 
 ## Results
+
+### Summary
 ||Student ($x_1$)|Teacher ($x_2$)|
 |:---|:---:|:---:|
 |Before</br>(mismatch)|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000000_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000000_t.png?raw=true" width="350">|  
 |After</br>(matched)|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000299_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000299_t.png?raw=true" width="350">|  
+
+### Detail (in Training)
+|Epoch|Student ($x_1$)|Teacher ($x_2$)|
+|:---|:---:|:---:|
+|0|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000000_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000000_t.png?raw=true" width="350">|  
+|1|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000001_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000001_t.png?raw=true" width="350">|  
+|30|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000030_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000030_t.png?raw=true" width="350">|  
+|150|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000150_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000150_t.png?raw=true" width="350">|  
+|300|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000299_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000299_t.png?raw=true" width="350">|  
 
 ## Requirements
 * PyTorch 2.0.1
