@@ -11,8 +11,8 @@ PyTorch implementation of "Emerging Properties in Self-Supervised Vision Transfo
 ## Results
 ||Student ($x_1$)|Teacher ($x_2$)|
 |:---|:---:|:---:|
-|Before</br>(mismatch)|<img src="https://github.com/YeongHyeon/DINO-Toy_Pytorch/blob/main/figures/epoch_000000_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO-Toy_Pytorch/blob/main/figures/epoch_000000_t.png?raw=true" width="350">|  
-|After</br>(matched)|<img src="https://github.com/YeongHyeon/DINO-Toy_Pytorch/blob/main/figures/epoch_000129_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO-Toy_Pytorch/blob/main/figures/epoch_000129_t.png?raw=true" width="350">|  
+|Before</br>(mismatch)|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000000_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000000_t.png?raw=true" width="350">|  
+|After</br>(matched)|<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000129_s.png?raw=true" width="350">  |<img src="https://github.com/YeongHyeon/DINO_MNIST-PyTorch/blob/main/figures/epoch_000129_t.png?raw=true" width="350">|  
 
 ## Requirements
 * PyTorch 2.0.1
