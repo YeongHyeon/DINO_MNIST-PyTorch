@@ -8,7 +8,7 @@ class Neuralnet(nn.Module):
     def __init__(self, **kwargs):
         super().__init__()
 
-        self.who_am_i = "GhostNet"
+        self.who_am_i = "DINO"
 
         self.dim_h = kwargs['dim_h']
         self.dim_w = kwargs['dim_w']
