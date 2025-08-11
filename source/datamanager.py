@@ -21,7 +21,11 @@ class DataSet(object):
         self.idx_tr, self.idx_val, self.idx_te = 0, 0, 0
 
     def __preparing(self):
-        (x_tr, y_tr), (x_te, y_te) = tf.keras.datasets.mnist.load_data()
+        mnist = np.load("/rsrch8/home/radphys_rsch/ypark6/mnist.npz")
+        x_tr = mnist["train"].T
+        y_tr = mnist["train_labels"].T
+        x_te = mnist["test"].T
+        y_te = mnist["test_labels"].T
         self.x_tr, self.y_tr = x_tr, y_tr
         self.x_tr, self.y_tr = shuffle(self.x_tr, self.y_tr)
 
@@ -65,6 +69,7 @@ class DataSet(object):
         while(True):
             try:
                 tmp_x = np.expand_dims(utils.min_max_norm(data[idx_d]), axis=-1)
+                tmp_x = tmp_x.reshape((28, 28, 1))
                 if(ttv == 0):
                     tmp_x1 = self.augmentation(tmp_x.copy())
                     tmp_x2 = self.augmentation(tmp_x.copy())
