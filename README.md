@@ -27,6 +27,7 @@ PyTorch implementation of "Emerging Properties in Self-Supervised Vision Transfo
 
 ## Requirements
 * PyTorch 2.0.1
+* [MNIST.npz](https://github.com/lucastheis/deepbelief/blob/master/data/mnist.npz)  
 
 ## Reference
 [1] Mathilde Caron, et al. <a href="https://openaccess.thecvf.com/content/ICCV2021/html/Caron_Emerging_Properties_in_Self-Supervised_Vision_Transformers_ICCV_2021_paper.html">"Emerging Properties in Self-Supervised Vision Transformers."</a> Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), 2021.
