@@ -21,7 +21,7 @@ class DataSet(object):
         self.idx_tr, self.idx_val, self.idx_te = 0, 0, 0
 
     def __preparing(self):
-        mnist = np.load("/rsrch8/home/radphys_rsch/ypark6/mnist.npz")
+        mnist = np.load("../mnist.npz")
         x_tr = mnist["train"].T
         y_tr = mnist["train_labels"].T
         x_te = mnist["test"].T
