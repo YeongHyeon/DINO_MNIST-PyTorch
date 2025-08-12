@@ -21,13 +21,12 @@ class DataSet(object):
         self.idx_tr, self.idx_val, self.idx_te = 0, 0, 0
 
     def __preparing(self):
-        mnist = np.load("../mnist.npz")
+        mnist = np.load("./mnist.npz")
         x_tr = mnist["train"].T
         y_tr = mnist["train_labels"].T
         x_te = mnist["test"].T
         y_te = mnist["test_labels"].T
-        self.x_tr, self.y_tr = x_tr, y_tr
-        self.x_tr, self.y_tr = shuffle(self.x_tr, self.y_tr)
+        self.x_tr, self.y_tr = shuffle(x_tr, y_tr)
 
         num_val = int(self.x_tr.shape[0] * 0.1)
         self.x_val, self.y_val = self.x_tr[:num_val], self.y_tr[:num_val]
@@ -99,4 +98,4 @@ class DataSet(object):
         elif(ttv == 1): self.idx_te = idx_d
         else: self.idx_val = idx_d
 
-        return {'x1':batch_x1.astype(np.float32), 'x2':batch_x2.astype(np.float32), 'y':batch_y.astype(np.float32), 'terminate':terminate}
+        return {'x1':batch_x1.astype(np.float32), 'x2':batch_x2.astype(np.float32), 'y':batch_y.astype(np.float32).squeeze(), 'terminate':terminate}
