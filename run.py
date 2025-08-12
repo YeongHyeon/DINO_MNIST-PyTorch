@@ -38,7 +38,7 @@ def main():
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--gpu', type=str, default="3", help='')
+    parser.add_argument('--gpu', type=str, default="0", help='')
     parser.add_argument('--ngpu', type=int, default=1, help='')
 
     parser.add_argument('--nn', type=int, default=0, help='')
