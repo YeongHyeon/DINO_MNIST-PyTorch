@@ -2,11 +2,11 @@ import os
 import numpy as np
 import source.utils as utils
 
-def training(agent, dataset, epochs, batch_size, normalize=True):
+def training(logger, agent, dataset, epochs, batch_size, normalize=True):
 
     utils.make_dir(path='result_tr', refresh=True)
 
-    print("\nTraining to %d epochs (%d of minibatch size)" %(epochs, batch_size))
+    logger.info("\nTraining to %d epochs (%d of minibatch size)" %(epochs, batch_size))
 
     iteration = 0
     for epoch in range(epochs):
@@ -29,7 +29,7 @@ def training(agent, dataset, epochs, batch_size, normalize=True):
             if(minibatch['terminate']): break
 
         agent.save_params(model='final_epoch')
-        print("Epoch [%d / %d] (%d iteration)  Loss: %.5f" \
+        logger.info("Epoch [%d / %d] (%d iteration)  Loss: %.5f" \
             %(epoch, epochs, iteration, step_dict['losses']['opt']))
         utils.plot_projection(tmp_emb_s, tmp_y, 1000, savepath=os.path.join('result_tr', 'epoch_%06d_s.pdf' %(epoch)))
         utils.plot_projection(tmp_emb_t, tmp_y, 1000, savepath=os.path.join('result_tr', 'epoch_%06d_t.pdf' %(epoch)))
@@ -46,10 +46,10 @@ def test(agent, dataset, batch_size):
     for idx_model, name_model in enumerate(list_model):
         tmp_emb_s, tmp_emb_t, tmp_y, tmp_loss = None, None, None, None
         try: agent.load_params(model=name_model)
-        except: print("Parameter loading was failed")
-        else: print("Parameter loaded")
+        except: logger.info("Parameter loading was failed")
+        else: logger.info("Parameter loaded")
 
-        print("\nTest... (w/ %s)" %(name_model))
+        logger.info("Test... (w/ %s)" %(name_model))
 
         confusion_matrix = np.zeros((dataset.num_class, dataset.num_class), np.int32)
         while(True):
@@ -71,7 +71,7 @@ def test(agent, dataset, batch_size):
             if(minibatch['terminate']): break
 
         tmp_loss_avg = np.average(tmp_loss)
-        print("Model: %s, Loss: %.5f" %(name_model, tmp_loss_avg))
+        logger.info("Model: %s, Loss: %.5f" %(name_model, tmp_loss_avg))
         utils.plot_projection(tmp_emb_s, tmp_y, 1000, savepath=os.path.join('result_te', '%s_s.pdf' %(name_model)))
         utils.plot_projection(tmp_emb_t, tmp_y, 1000, savepath=os.path.join('result_te', '%s_t.pdf' %(name_model)))
 

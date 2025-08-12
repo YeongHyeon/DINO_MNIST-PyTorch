@@ -6,11 +6,15 @@ from sklearn.utils import shuffle
 from scipy.ndimage import gaussian_filter
 from scipy.ndimage.interpolation import rotate
 
+from source.logger import LoggerSingleton
+
 class DataSet(object):
 
     def __init__(self):
 
-        print("\nInitializing Dataset...")
+        self.logger = LoggerSingleton.get_logger()
+        self.logger.info("Initializing Dataset...")
+
         self.num_class = 10
         self.__reset_index()
         self.__preparing()
@@ -36,7 +40,6 @@ class DataSet(object):
         ftxt = open("training_summary.txt", "w")
         for i in range(10):
             text = "Class-%d: %5d samples" %(i, np.sum(self.y_tr == i))
-            print(text)
             ftxt.write("%s\n" %(text))
         ftxt.close()
 

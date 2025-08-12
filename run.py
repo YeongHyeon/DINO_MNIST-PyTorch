@@ -6,9 +6,12 @@ import source.utils as utils
 import source.connector as con
 import source.procedure as proc
 import source.datamanager as dman
+from source.logger import LoggerSingleton
 
 def main():
     os.environ["CUDA_VISIBLE_DEVICES"]=FLAGS.gpu
+
+    logger = LoggerSingleton.get_logger()
 
     ngpu = FLAGS.ngpu
     if(not(torch.cuda.is_available())): ngpu = 0
@@ -22,15 +25,15 @@ def main():
         learning_rate=FLAGS.lr, path_ckpt='Checkpoint', ngpu=ngpu, device=device)
 
     time_tr = time.time()
-    proc.training(agent=agent, dataset=dataset, batch_size=FLAGS.batch, epochs=FLAGS.epochs)
+    proc.training(logger=logger, agent=agent, dataset=dataset, batch_size=FLAGS.batch, epochs=FLAGS.epochs)
     time_te = time.time()
-    best_dict, num_model = proc.test(agent=agent, dataset=dataset, batch_size=FLAGS.batch)
+    best_dict, num_model = proc.test(logger=logger, agent=agent, dataset=dataset, batch_size=FLAGS.batch)
     time_fin = time.time()
 
     tr_time = time_te - time_tr
     te_time = time_fin - time_te
-    print("Time (TR): %.5f [sec]" %(tr_time))
-    print("Time (TE): %.5f (%.5f [sec/sample])" %(te_time, te_time/num_model/dataset.num_te))
+    logger.info("Time (TR): %.5f [sec]" %(tr_time))
+    logger.info("Time (TE): %.5f (%.5f [sec/sample])" %(te_time, te_time/num_model/dataset.num_te))
 
 if __name__ == '__main__':
 

@@ -11,11 +11,15 @@ import torchsummary
 import torchvision.transforms as T
 from torch.utils.tensorboard import SummaryWriter
 
+from source.logger import LoggerSingleton
+
 class Agent(object):
 
     def __init__(self, **kwargs):
 
-        print("\nInitializing Neural Network...")
+        self.logger = LoggerSingleton.get_logger()
+        self.logger.info("Initializing Agent...")
+
         self.nn = kwargs['nn']
         self.dim_h = kwargs['dim_h']
         self.dim_w = kwargs['dim_w']
