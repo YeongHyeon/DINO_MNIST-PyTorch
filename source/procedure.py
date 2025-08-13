@@ -35,7 +35,7 @@ def training(logger, agent, dataset, epochs, batch_size, normalize=True):
         utils.plot_projection(tmp_emb_t, tmp_y, 1000, savepath=os.path.join('result_tr', 'epoch_%06d_t.pdf' %(epoch)))
     agent.save_params(model='final_epoch')
 
-def test(agent, dataset, batch_size):
+def test(logger, agent, dataset, batch_size):
 
     list_model = utils.sorted_list(os.path.join(agent.path_ckpt, '*.pth'))
     for idx_model, path_model in enumerate(list_model):
