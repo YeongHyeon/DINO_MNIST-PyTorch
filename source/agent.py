@@ -130,9 +130,9 @@ class Agent(object):
 
     def load_params(self, model):
 
-        self.__teacher.load_state_dict(torch.load(os.path.join(self.path_ckpt, '%s_t' %(model))), strict=False)
+        self.__teacher.load_state_dict(torch.load(os.path.join(self.path_ckpt, '%s' %(model.replace("_s.pth", "_t.pth")))), strict=False)
         self.__teacher.eval()
-        self.__student.load_state_dict(torch.load(os.path.join(self.path_ckpt, '%s_s' %(model))), strict=False)
+        self.__student.load_state_dict(torch.load(os.path.join(self.path_ckpt, '%s' %(model))), strict=False)
         self.__student.eval()
 
     def detach(self, x):
