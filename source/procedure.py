@@ -40,12 +40,15 @@ def test(logger, agent, dataset, batch_size):
     list_model = utils.sorted_list(os.path.join(agent.path_ckpt, '*_s.pth'))
     for idx_model, path_model in enumerate(list_model):
         list_model[idx_model] = path_model.split('/')[-1]
+        logger.info("Model ready: %s" %(list_model[idx_model]))
 
     utils.make_dir(path='result_te', refresh=True)
     best_loss = 0
     for idx_model, name_model in enumerate(list_model):
         tmp_emb_s, tmp_emb_t, tmp_y, tmp_loss = None, None, None, None
-        try: agent.load_params(model=name_model)
+        try: 
+            logger.info("Load: %s" %(name_model))
+            agent.load_params(model=name_model)
         except: logger.info("Parameter loading was failed")
         else: logger.info("Parameter loaded")
 
@@ -72,8 +75,8 @@ def test(logger, agent, dataset, batch_size):
 
         tmp_loss_avg = np.average(tmp_loss)
         logger.info("Model: %s, Loss: %.5f" %(name_model, tmp_loss_avg))
-        utils.plot_projection(tmp_emb_s, tmp_y, 1000, savepath=os.path.join('result_te', '%s_s.pdf' %(name_model)))
-        utils.plot_projection(tmp_emb_t, tmp_y, 1000, savepath=os.path.join('result_te', '%s_t.pdf' %(name_model)))
+        utils.plot_projection(tmp_emb_s, tmp_y, 1000, savepath=os.path.join('result_te', '%s_s.pdf' %(name_model.replace("_s.pth", ""))))
+        utils.plot_projection(tmp_emb_t, tmp_y, 1000, savepath=os.path.join('result_te', '%s_t.pdf' %(name_model.replace("_s.pth", ""))))
 
         best_loss = max(best_loss, tmp_loss_avg)
 
